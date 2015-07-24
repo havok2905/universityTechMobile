@@ -4,17 +4,24 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.GridView;
+import android.widget.ListView;
 
 public class MainActivity extends ActionBarActivity {
+
+  private Meetup[] meetups = {
+    new Meetup("University JavaScript", "10/10/10"),
+    new Meetup("University Ruby", "10/10/10"),
+    new Meetup("University CSS", "10/10/10"),
+    new Meetup("University Mobile", "10/10/10")
+  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    GridView meetupsGrid = (GridView) findViewById(R.id.meetups_grid);
-    meetupsGrid.setAdapter(new MeetupAdapter(this));
+    ListView meetupsList = (ListView) findViewById(R.id.meetups_list);
+    meetupsList.setAdapter(new MeetupAdapter(this, meetups));
   }
 
   @Override
