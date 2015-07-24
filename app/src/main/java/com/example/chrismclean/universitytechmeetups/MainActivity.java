@@ -9,10 +9,10 @@ import android.widget.ListView;
 public class MainActivity extends ActionBarActivity {
 
   private Meetup[] meetups = {
-    new Meetup("University JavaScript", "10/10/10"),
-    new Meetup("University Ruby", "10/10/10"),
-    new Meetup("University CSS", "10/10/10"),
-    new Meetup("University Mobile", "10/10/10")
+    new Meetup("University JavaScript", "My JavaScript Event" ,"10/10/10"),
+    new Meetup("University Ruby", "My Ruby Event", "10/10/10"),
+    new Meetup("University CSS", "My CSS Event", "10/10/10"),
+    new Meetup("University Mobile", "My Mobile Event", "10/10/10")
   };
 
   @Override

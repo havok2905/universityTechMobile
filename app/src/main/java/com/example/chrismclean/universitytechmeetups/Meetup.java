@@ -3,10 +3,12 @@ package com.example.chrismclean.universitytechmeetups;
 import android.graphics.Color;
 
 public class Meetup {
+  private String org;
   private String name;
   private String date;
 
-  public Meetup(String name, String date) {
+  public Meetup(String org, String name, String date) {
+    this.org = org;
     this.name = name;
     this.date = date;
   }
@@ -27,10 +29,18 @@ public class Meetup {
     this.date = date;
   }
 
+  public String getOrg() {
+    return this.org;
+  }
+
+  public void setOrg(String org) {
+    this.org = org;
+  }
+
   public Integer getColor() {
     Integer color;
 
-    switch(this.name) {
+    switch(this.org) {
       case "University JavaScript":
         color = 0xFF2196F3;
         break;
