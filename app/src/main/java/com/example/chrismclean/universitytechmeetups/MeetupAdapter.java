@@ -16,7 +16,6 @@ public class MeetupAdapter extends ArrayAdapter<Meetup> {
   public View getView(int position, View view, ViewGroup parent) {
     TextView nameView;
     TextView dateView;
-    TextView colorView;
 
     Context context = this.getContext();
     LayoutInflater inflater = LayoutInflater.from(context);
@@ -26,11 +25,11 @@ public class MeetupAdapter extends ArrayAdapter<Meetup> {
       view = inflater.inflate(R.layout.meetup_item, null, false);
       nameView = (TextView)view.findViewById(R.id.meetup_name);
       dateView = (TextView)view.findViewById(R.id.meetup_date);
-      colorView = (TextView)view.findViewById(R.id.meetup_color);
 
       nameView.setText(meetup.getName());
       dateView.setText(meetup.getDate());
-      colorView.setText(meetup.getColor());
+
+      view.setBackgroundColor(meetup.getColor());
     }
 
     return view;

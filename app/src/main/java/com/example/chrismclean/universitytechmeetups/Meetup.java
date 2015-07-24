@@ -1,5 +1,7 @@
 package com.example.chrismclean.universitytechmeetups;
 
+import android.graphics.Color;
+
 public class Meetup {
   private String name;
   private String date;
@@ -25,24 +27,24 @@ public class Meetup {
     this.date = date;
   }
 
-  public String getColor() {
-    String color;
+  public Integer getColor() {
+    Integer color;
 
     switch(this.name) {
       case "University JavaScript":
-        color = "blue";
+        color = 0xFF2196F3;
         break;
       case "University Ruby":
-        color = "red";
+        color = 0xFFF44336;
         break;
       case "University CSS":
-        color = "purple";
+        color = 0xFF9C27B0;
         break;
       case "University Mobile":
-        color = "green";
+        color = 0xFF8BC34A;
         break;
       default:
-        color = "blue";
+        color = 0xFF2196F3;
         break;
     }
 
