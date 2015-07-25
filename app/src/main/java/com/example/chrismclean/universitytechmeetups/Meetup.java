@@ -1,6 +1,6 @@
 package com.example.chrismclean.universitytechmeetups;
 
-import android.graphics.Color;
+import java.util.Date;
 
 public class Meetup {
   private String org;
@@ -17,24 +17,12 @@ public class Meetup {
     return this.name;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
-
   public String getDate() {
-    return this.date;
-  }
-
-  public void setDate(String date) {
-    this.date = date;
+    return DateTranslator.fromDateTime(this.date);
   }
 
   public String getOrg() {
     return this.org;
-  }
-
-  public void setOrg(String org) {
-    this.org = org;
   }
 
   public Integer getColor() {
