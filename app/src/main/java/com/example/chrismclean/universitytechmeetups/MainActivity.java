@@ -1,27 +1,42 @@
 package com.example.chrismclean.universitytechmeetups;
 
+import java.util.ArrayList;
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.google.gson.JsonObject;
+
+import com.koushikdutta.async.future.FutureCallback;
 
 public class MainActivity extends ActionBarActivity {
-
-  private Meetup[] meetups = {
-    new Meetup("University JavaScript", "My JavaScript Event" ,"2015-07-24T18:03:48.860Z"),
-    new Meetup("University Ruby", "My Ruby Event", "2015-07-24T18:03:48.860Z"),
-    new Meetup("University CSS", "My CSS Event", "2015-07-24T18:03:48.860Z"),
-    new Meetup("University Mobile", "My Mobile Event", "2015-07-24T18:03:48.860Z")
-  };
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
     setContentView(R.layout.activity_main);
 
-    ListView meetupsList = (ListView) findViewById(R.id.meetups_list);
-    meetupsList.setAdapter(new MeetupAdapter(this, meetups));
+    final ListView meetupsList = (ListView) findViewById(R.id.meetups_list);
+    final MeetupAdapter meetupAdapter = new MeetupAdapter(this, new ArrayList<Meetup>());
+
+    meetupsList.setAdapter(meetupAdapter);
+
+    Api.getMeetups(this).setCallback(new FutureCallback<JsonObject>() {
+      @Override
+      public void onCompleted(Exception e, JsonObject result) {
+        if (e != null) {
+          Toast.makeText(getApplicationContext(), "Error loading meetups", Toast.LENGTH_LONG).show();
+          return;
+        }
+
+        meetupAdapter.addAll(Api.jsonToMeetups(result));
+      }
+    });
   }
 
   @Override

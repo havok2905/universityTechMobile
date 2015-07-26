@@ -1,7 +1,5 @@
 package com.example.chrismclean.universitytechmeetups;
 
-import java.util.Date;
-
 public class Meetup {
   private String org;
   private String name;
@@ -14,10 +12,16 @@ public class Meetup {
   }
 
   public String getName() {
+    if(this.name == "") {
+      return "Coming Soon";
+    }
     return this.name;
   }
 
   public String getDate() {
+    if(this.date == "") {
+      return "Coming Soon";
+    }
     return DateTranslator.fromDateTime(this.date);
   }
 

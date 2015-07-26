@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MeetupAdapter extends ArrayAdapter<Meetup> {
-  public MeetupAdapter(Context context, Meetup[] data) {
+  public MeetupAdapter(Context context, ArrayList<Meetup> data) {
     super(context, R.layout.meetup_item, data);
   }
 
